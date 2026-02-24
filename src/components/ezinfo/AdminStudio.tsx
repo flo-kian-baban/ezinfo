@@ -224,7 +224,7 @@ export default function AdminStudio({ initialConfig, adminEmail }: AdminStudioPr
                     {/* ────── RIGHT: Preview Canvas (6 cols) ────── */}
                     <div className="lg:col-span-6 xl:col-span-6 h-full flex flex-col items-center justify-center p-4">
                         {/* Device Frame Wrapper */}
-                        <div ref={phoneRef} className="relative w-full max-w-[400px] max-h-[866px] aspect-[9/19.5] rounded-[48px] border-[8px] border-[#2a2a2a] bg-black shadow-2xl flex-shrink-0 mx-auto overflow-hidden ring-1 ring-white/10 flex flex-col">
+                        <div ref={phoneRef} className="relative w-full max-w-[420px] max-h-[840px] aspect-[9/18] rounded-[48px] border-[8px] border-[#2a2a2a] bg-black shadow-2xl flex-shrink-0 mx-auto overflow-hidden ring-1 ring-white/10 flex flex-col">
 
                             {/* Device 'Island' or Notch simulation */}
                             <div className="absolute top-0 inset-x-0 h-6 flex justify-center z-50 pointer-events-none">
