@@ -138,57 +138,55 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
             <div style={wrapperStyle} className="ez-preview-container">
                 {config.theme_shade_color && <div style={shadeStyle} />}
                 <style dangerouslySetInnerHTML={{ __html: styleBlock }} />
-                <div className={`w-full mx-auto relative z-10 flex flex-col ${mode === 'public' ? 'max-w-[480px] min-h-[100dvh]' : 'max-w-lg px-6'}`}>
-                    <div className={`relative overflow-hidden bg-surface/80 backdrop-blur-xl flex flex-col flex-1 ${mode === 'public' ? '' : 'rounded-[24px] border border-white/10 shadow-xl shadow-black/40'}`}>
-                        <div className="absolute top-0 w-full h-1" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
+                <div className="w-full max-w-lg mx-auto relative z-10 px-6">
+                    <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-surface/80 backdrop-blur-xl shadow-xl shadow-black/40">
+                        <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
 
-                        <div className="flex-1 flex flex-col justify-center">
-                            <div className="p-8 space-y-6 text-center">
-                                {/* Spinner — static in preview */}
-                                <div className="flex justify-center pb-2">
-                                    <div
-                                        className={`h-12 w-12 rounded-full border-[3px] border-white/10 border-t-accent ${mode === "public" ? "animate-spin" : ""}`}
-                                        style={{ borderTopColor: accentColor }}
-                                    />
-                                </div>
-
-                                <div className="space-y-3">
-                                    <h2 className="text-[22px] font-bold text-white tracking-tight leading-snug">
-                                        Redirecting to Google Reviews…
-                                    </h2>
-                                    <p className="text-[15px] text-muted/60 max-w-[280px] mx-auto leading-relaxed">
-                                        You&apos;ll be taken there in a moment.
-                                    </p>
-                                </div>
-
-                                {mode === "preview" && (
-                                    <div className="pt-2">
-                                        <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-accent/80">
-                                            <span className="h-2 w-2 rounded-full bg-accent/60" />
-                                            Preview — would redirect now
-                                        </span>
-                                    </div>
-                                )}
-
-                                <div className="pt-4">
-                                    <button
-                                        onClick={handleCopyAndReview}
-                                        className={`w-full shadow-lg shadow-black/20 rounded-xl px-4 py-4 text-[15px] font-bold text-white transition-all flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] ${mode === "preview" ? "cursor-default" : ""}`}
-                                        style={{ backgroundColor: accentColor }}
-                                    >
-                                        <svg className="h-5 w-5 drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-                                        </svg>
-                                        Open Google Reviews
-                                    </button>
-                                </div>
+                        <div className="p-8 space-y-6 text-center">
+                            {/* Spinner — static in preview */}
+                            <div className="flex justify-center pb-2">
+                                <div
+                                    className={`h-12 w-12 rounded-full border-[3px] border-white/10 border-t-accent ${mode === "public" ? "animate-spin" : ""}`}
+                                    style={{ borderTopColor: accentColor }}
+                                />
                             </div>
 
-                            {/* Offer inside direct mode container */}
-                            {renderOfferCard(config, mode, accentColor, logEvent, setToast)}
+                            <div className="space-y-3">
+                                <h2 className="text-[22px] font-bold text-white tracking-tight leading-snug">
+                                    Redirecting to Google Reviews…
+                                </h2>
+                                <p className="text-[15px] text-muted/60 max-w-[280px] mx-auto leading-relaxed">
+                                    You&apos;ll be taken there in a moment.
+                                </p>
+                            </div>
+
+                            {mode === "preview" && (
+                                <div className="pt-2">
+                                    <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-accent/80">
+                                        <span className="h-2 w-2 rounded-full bg-accent/60" />
+                                        Preview — would redirect now
+                                    </span>
+                                </div>
+                            )}
+
+                            <div className="pt-4">
+                                <button
+                                    onClick={handleCopyAndReview}
+                                    className={`w-full shadow-lg shadow-black/20 rounded-xl px-4 py-4 text-[15px] font-bold text-white transition-all flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] ${mode === "preview" ? "cursor-default" : ""}`}
+                                    style={{ backgroundColor: accentColor }}
+                                >
+                                    <svg className="h-5 w-5 drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                                    </svg>
+                                    Open Google Reviews
+                                </button>
+                            </div>
                         </div>
 
-                        <div className="border-t border-white/5 px-6 py-4 text-center mt-auto">
+                        {/* Offer inside direct mode container */}
+                        {renderOfferCard(config, mode, accentColor, logEvent, setToast)}
+
+                        <div className="border-t border-white/5 px-6 py-3 text-center">
                             <span className="text-[9px] text-muted/30 uppercase tracking-widest">Powered by EZinfo</span>
                         </div>
                     </div>
@@ -204,37 +202,35 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
         <div style={wrapperStyle} className="ez-preview-container">
             {config.theme_shade_color && <div style={shadeStyle} />}
             <style dangerouslySetInnerHTML={{ __html: styleBlock }} />
-            <div className={`w-full mx-auto relative z-10 flex flex-col ${mode === 'public' ? 'max-w-[480px] min-h-[100dvh]' : 'max-w-lg px-6'}`}>
-                <div className={`relative overflow-hidden bg-surface/80 backdrop-blur-xl flex flex-col flex-1 ${mode === 'public' ? '' : 'rounded-[24px] border border-white/10 shadow-xl shadow-black/40'}`}>
-                    <div className="absolute top-0 w-full h-1" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
+            <div className="w-full max-w-lg mx-auto relative z-10 px-6">
+                <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-surface/80 backdrop-blur-xl shadow-xl shadow-black/40">
+                    <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
 
-                    <div className="flex-1 flex flex-col justify-center">
-                        {isSurveyMode ? (
-                            <SurveyFlow
+                    {isSurveyMode ? (
+                        <SurveyFlow
+                            config={config}
+                            mode={mode}
+                            accentColor={accentColor}
+                            logEvent={logEvent}
+                            onToast={setToast}
+                            renderOffer={() => renderOfferCard(config, mode, accentColor, logEvent, setToast)}
+                        />
+                    ) : (
+                        <>
+                            <ReviewComposer
                                 config={config}
                                 mode={mode}
                                 accentColor={accentColor}
                                 logEvent={logEvent}
                                 onToast={setToast}
-                                renderOffer={() => renderOfferCard(config, mode, accentColor, logEvent, setToast)}
                             />
-                        ) : (
-                            <>
-                                <ReviewComposer
-                                    config={config}
-                                    mode={mode}
-                                    accentColor={accentColor}
-                                    logEvent={logEvent}
-                                    onToast={setToast}
-                                />
 
-                                {/* Offer inside assist mode container */}
-                                {renderOfferCard(config, mode, accentColor, logEvent, setToast)}
-                            </>
-                        )}
-                    </div>
+                            {/* Offer inside assist mode container */}
+                            {renderOfferCard(config, mode, accentColor, logEvent, setToast)}
+                        </>
+                    )}
 
-                    <div className="border-t border-white/5 px-6 py-4 text-center mt-auto">
+                    <div className="border-t border-white/5 px-6 py-3 text-center">
                         <span className="text-[9px] text-muted/30 uppercase tracking-widest">Powered by EZinfo</span>
                     </div>
                 </div>
