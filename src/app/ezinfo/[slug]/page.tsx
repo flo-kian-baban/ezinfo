@@ -165,8 +165,8 @@ export default async function EzinfoPublicPage({
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen p-4">
+        <main className="w-full min-h-screen">
             <MiddlewarePreview mode="public" config={config} />
-        </div>
+        </main>
     );
 }
