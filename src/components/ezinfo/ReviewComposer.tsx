@@ -100,7 +100,7 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
             </div>
 
             <div className="pt-2 space-y-2.5">
-                {(config.ai_enabled || mode === 'preview') && preAiText === null ? (
+                {preAiText === null ? (
                     <>
                         <button
                             onClick={handleAiRewrite}
@@ -150,7 +150,7 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
                             Copy & Open Google Reviews
                         </button>
 
-                        {(config.ai_enabled || mode === 'preview') && preAiText !== null && (
+                        {preAiText !== null && (
                             <div className="text-center pt-0.5">
                                 <button
                                     onClick={handleUndoAi}
