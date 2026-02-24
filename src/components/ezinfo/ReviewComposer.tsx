@@ -80,11 +80,11 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
 
     return (
         <div className="p-5 space-y-5">
-            <div className="space-y-1 text-center">
+            <div className="space-y-2 text-center">
                 <h2 className="text-[20px] font-bold text-white tracking-tight leading-snug px-2">
                     {config.prompt_title || "Your prompt title"}
                 </h2>
-                <p className="text-[14px] text-muted/60 max-w-[280px] mx-auto leading-relaxed">
+                <p className="text-[14px] text-muted/60 max-w-[320px] mx-auto leading-relaxed">
                     {config.prompt_subtitle || "Your prompt subtitle"}
                 </p>
             </div>
