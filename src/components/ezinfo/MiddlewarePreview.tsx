@@ -107,9 +107,7 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: isPreview ? "flex-start" : "center",
-        paddingTop: isPreview ? "48px" : undefined,
-        paddingBottom: isPreview ? "24px" : undefined,
+        justifyContent: "center",
         position: "relative",
     };
 
@@ -140,7 +138,7 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
             <div style={wrapperStyle} className="ez-preview-container">
                 {config.theme_shade_color && <div style={shadeStyle} />}
                 <style dangerouslySetInnerHTML={{ __html: styleBlock }} />
-                <div className="w-full max-w-lg mx-auto relative z-10 px-3">
+                <div className="w-full max-w-lg mx-auto relative z-10 px-6">
                     <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-surface/80 backdrop-blur-xl shadow-xl shadow-black/40">
                         <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
 
@@ -204,7 +202,7 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
         <div style={wrapperStyle} className="ez-preview-container">
             {config.theme_shade_color && <div style={shadeStyle} />}
             <style dangerouslySetInnerHTML={{ __html: styleBlock }} />
-            <div className="w-full max-w-lg mx-auto relative z-10 px-3">
+            <div className="w-full max-w-lg mx-auto relative z-10 px-6">
                 <div className="relative overflow-hidden rounded-[24px] border border-white/10 bg-surface/80 backdrop-blur-xl shadow-xl shadow-black/40">
                     <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}, transparent)` }} />
 
