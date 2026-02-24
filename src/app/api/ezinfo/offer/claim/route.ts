@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createAdminClient } from "@/lib/supabase-admin";
+import { createEzinfoClient } from "@/lib/supabase-admin";
 import { createTrace } from "@/lib/trace";
 
 export async function POST(req: NextRequest) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
             hasEmail: !!email,
         });
 
-        const supabase = createAdminClient();
+        const supabase = createEzinfoClient();
 
         // Lookup business_id safely
         const { data: tp, error: tpError } = await supabase

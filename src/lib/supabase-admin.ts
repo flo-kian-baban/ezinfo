@@ -14,7 +14,19 @@ export function createAdminClient() {
         throw new Error("Missing SUPABASE_URL or SERVICE_ROLE_KEY env vars");
     }
 
-    return createClient(url, key, {
+    const client = createClient(url, key, {
         auth: { autoRefreshToken: false, persistSession: false },
     });
+
+    return client;
+}
+
+/**
+ * Returns a Supabase admin client scoped to the `ezinfo` schema.
+ * Use this for direct table queries (touchpoints, survey_submissions, etc.).
+ * Use createAdminClient() for RPCs which live in the `public` schema.
+ */
+export function createEzinfoClient() {
+    const client = createAdminClient();
+    return client.schema("ezinfo");
 }

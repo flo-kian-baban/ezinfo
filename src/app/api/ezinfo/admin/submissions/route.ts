@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { createAdminClient } from "@/lib/supabase-admin";
+import { createEzinfoClient } from "@/lib/supabase-admin";
 import { createTrace } from "@/lib/trace";
 
 export async function POST(req: NextRequest) {
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
         trace.info("Submissions request", { slug, format });
 
-        const supabase = createAdminClient();
+        const supabase = createEzinfoClient();
 
         // Auth: verify email matches business
         const { data: biz, error: bizError } = await supabase
