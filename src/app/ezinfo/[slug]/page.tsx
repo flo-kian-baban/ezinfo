@@ -50,7 +50,7 @@ export default async function EzinfoPublicPage({
     let surveyQuestions: { id: string; sort_order: number; question_type: string; question_text: string; options: string[] }[] = [];
     if (data && data.primary_mode === "SURVEY") {
         const { data: qData } = await supabase
-            .from("survey_questions")
+            .from("ezinfo_public_survey_questions")
             .select("id, sort_order, question_type, question_text, options")
             .eq("touchpoint_id", data.touchpoint_id)
             .order("sort_order", { ascending: true });
