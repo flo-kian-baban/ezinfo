@@ -100,12 +100,11 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
             </div>
 
             <div className="pt-3 space-y-3">
-                {config.ai_enabled && preAiText === null ? (
+                {config.ai_enabled && preAiText === null && (
                     <button
                         onClick={handleAiRewrite}
                         disabled={aiLoading || !reviewText.trim()}
-                        className={`w-full shadow-lg shadow-black/20 rounded-xl px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed`}
-                        style={{ backgroundColor: accentColor }}
+                        className={`w-full rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed`}
                     >
                         {aiLoading ? (
                             <>
@@ -124,32 +123,22 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
                             </>
                         )}
                     </button>
-                ) : (
-                    <button
-                        onClick={handleCopyAndReview}
-                        disabled={!reviewText.trim() && !config.google_review_url}
-                        className={`w-full shadow-lg shadow-black/20 rounded-xl px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed ${mode === "preview" ? "cursor-default" : ""}`}
-                        style={{ backgroundColor: accentColor }}
-                    >
-                        <svg className="h-4 w-4 drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
-                        </svg>
-                        Copy & Open Google Reviews
-                    </button>
                 )}
 
+                <button
+                    onClick={handleCopyAndReview}
+                    disabled={!reviewText.trim() && !config.google_review_url}
+                    className={`w-full shadow-lg shadow-black/20 rounded-xl px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed ${mode === "preview" ? "cursor-default" : ""}`}
+                    style={{ backgroundColor: accentColor }}
+                >
+                    <svg className="h-4 w-4 drop-shadow-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" />
+                    </svg>
+                    Copy & Open Google Reviews
+                </button>
+
                 {/* Secondary Actions (Text Links) */}
-                {config.ai_enabled && preAiText === null && (
-                    <div className="text-center pt-1.5">
-                        <button
-                            onClick={handleCopyAndReview}
-                            disabled={!reviewText.trim() && !config.google_review_url}
-                            className="text-[12px] font-medium text-muted/50 hover:text-white transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        >
-                            Skip & continue to Google Reviews
-                        </button>
-                    </div>
-                )}
+                {/* Secondary Actions (Text Links) */}
 
                 {config.ai_enabled && preAiText !== null && (
                     <div className="text-center pt-1.5">
