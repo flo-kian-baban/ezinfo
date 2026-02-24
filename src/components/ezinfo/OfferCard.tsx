@@ -63,7 +63,7 @@ export default function OfferCard({ config, mode, accentColor, logEvent, onToast
     if (!config.offer_enabled) return null;
 
     return (
-        <div className="relative border-t border-white/5 bg-gradient-to-b from-white/[0.04] to-transparent p-4">
+        <div className="relative border-t border-white/5 bg-gradient-to-b from-white/[0.04] to-transparent px-5 py-4">
             {/* Decorative ambient glow */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px]" style={{ background: `linear-gradient(90deg, transparent, ${accentColor}80, transparent)` }}></div>
 
