@@ -137,8 +137,8 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                 </div>
 
                 <div className="space-y-3 text-center">
-                    <h2 className="text-xl font-bold text-white tracking-tight">One last thing</h2>
-                    <p className="text-[15px] text-muted/60 leading-relaxed max-w-[280px] mx-auto">
+                    <h2 className="text-[20px] font-bold text-white tracking-tight">One last thing</h2>
+                    <p className="text-[14px] text-muted/60 leading-relaxed max-w-[280px] mx-auto">
                         Leave your email to stay connected (optional)
                     </p>
                 </div>
@@ -149,7 +149,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="your@email.com"
-                        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3.5 text-[15px] text-foreground placeholder:text-muted/30 transition-all focus:border-accent/40 focus:bg-black/60 focus:outline-none focus:ring-4 focus:ring-accent/10"
+                        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-[14px] text-foreground placeholder:text-muted/30 transition-all focus:border-accent/40 focus:bg-black/60 focus:outline-none focus:ring-4 focus:ring-accent/10"
                     />
                 </div>
 
@@ -157,7 +157,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                     <button
                         type="button"
                         onClick={handleBack}
-                        className="flex-1 rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3.5 text-[15px] font-semibold text-white hover:bg-white-[0.06] hover:border-white/10 transition-all active:scale-[0.98]"
+                        className="flex-1 rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3 text-[14px] font-semibold text-white hover:bg-white-[0.06] hover:border-white/10 transition-all active:scale-[0.98]"
                     >
                         Back
                     </button>
@@ -165,7 +165,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                         type="button"
                         onClick={handleSubmit}
                         disabled={submitting}
-                        className="flex-1 shadow-lg shadow-black/20 rounded-xl px-4 py-3.5 text-[15px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
+                        className="flex-1 shadow-lg shadow-black/20 rounded-xl px-4 py-3 text-[14px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
                         style={{ backgroundColor: accentColor }}
                     >
                         {submitting ? "Submitting…" : "Submit"}
@@ -177,11 +177,11 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
 
     /* ── Question step ── */
     return (
-        <div className="p-6 space-y-6">
+        <div className="p-5 space-y-5">
             {/* Progress bar */}
             <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-widest text-muted/40">
+                    <span className="text-[11px] font-semibold uppercase tracking-widest text-muted/40">
                         Step {currentStep + 1} of {totalSteps}
                     </span>
                 </div>
@@ -197,7 +197,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
             </div>
 
             {/* Question text */}
-            <h2 className="text-[22px] font-bold text-white text-center tracking-tight leading-snug px-2">
+            <h2 className="text-[20px] font-bold text-white text-center tracking-tight leading-snug px-2">
                 {currentQuestion?.question_text || "Question"}
             </h2>
 
@@ -209,7 +209,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                         value={currentAnswer}
                         onChange={(e) => setAnswer(e.target.value)}
                         placeholder="Type your answer…"
-                        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3.5 text-[15px] text-foreground placeholder:text-muted/30 transition-all resize-none focus:border-accent/40 focus:bg-black/60 focus:outline-none focus:ring-4 focus:ring-accent/10"
+                        className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-[14px] text-foreground placeholder:text-muted/30 transition-all resize-none focus:border-accent/40 focus:bg-black/60 focus:outline-none focus:ring-4 focus:ring-accent/10"
                     />
                 )}
 
@@ -222,21 +222,21 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                                     key={i}
                                     type="button"
                                     onClick={() => setAnswer(opt)}
-                                    className={`w-full text-left rounded-xl border px-4 py-4 text-[15px] font-medium transition-all duration-200 active:scale-[0.99] ${isSelected
+                                    className={`w-full text-left rounded-xl border px-4 py-3 text-[14px] font-medium transition-all duration-200 active:scale-[0.99] ${isSelected
                                         ? "border-accent/40 bg-accent/10 text-white shadow-sm"
                                         : "border-white/5 bg-white/[0.03] text-muted/70 hover:bg-white-[0.06] hover:text-white"
                                         }`}
                                     style={isSelected ? { borderColor: `${accentColor}55`, backgroundColor: `${accentColor}1A` } : undefined}
                                 >
-                                    <span className="flex items-center gap-3.5">
+                                    <span className="flex items-center gap-3">
                                         <span
-                                            className={`h-4 w-4 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors ${isSelected ? "border-accent" : "border-white/20"
+                                            className={`h-3.5 w-3.5 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors ${isSelected ? "border-accent" : "border-white/20"
                                                 }`}
                                             style={isSelected ? { borderColor: accentColor } : undefined}
                                         >
                                             {isSelected && (
                                                 <span
-                                                    className="h-2 w-2 rounded-full"
+                                                    className="h-1.5 w-1.5 rounded-full"
                                                     style={{ backgroundColor: accentColor }}
                                                 />
                                             )}
@@ -256,7 +256,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                     <button
                         type="button"
                         onClick={handleBack}
-                        className="flex-1 rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3.5 text-[15px] font-semibold text-white hover:bg-white-[0.06] hover:border-white/10 transition-all active:scale-[0.98]"
+                        className="flex-1 rounded-xl border border-white/5 bg-white/[0.03] px-4 py-3 text-[14px] font-semibold text-white hover:bg-white-[0.06] hover:border-white/10 transition-all active:scale-[0.98]"
                     >
                         Back
                     </button>
@@ -265,7 +265,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                     type="button"
                     onClick={handleNext}
                     disabled={!currentAnswer}
-                    className={`${currentStep > 0 ? "flex-1" : "w-full"} shadow-lg shadow-black/20 rounded-xl px-4 py-3.5 text-[15px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed`}
+                    className={`${currentStep > 0 ? "flex-1" : "w-full"} shadow-lg shadow-black/20 rounded-xl px-4 py-3 text-[14px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed`}
                     style={{ backgroundColor: accentColor }}
                 >
                     {isLastQuestion ? "Next" : "Next"}
