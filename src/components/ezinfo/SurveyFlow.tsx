@@ -68,15 +68,24 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
                     answers,
                 }),
             });
+
+            if (!res.ok) {
+                const text = await res.text();
+                console.error(`Survey submit failed: ${res.status}`, text);
+                onToast(`Error ${res.status}: ${res.status === 404 ? "Route not found — deployment may be in progress" : "Please try again."}`);
+                return;
+            }
+
             const json = await res.json();
-            if (res.ok && json.submission_id) {
+            if (json.submission_id) {
                 setCompleted(true);
                 onToast("Survey submitted successfully!");
                 logEvent("survey_submit");
             } else {
                 onToast("Something went wrong. Please try again.");
             }
-        } catch {
+        } catch (err) {
+            console.error("Survey submit network error:", err);
             onToast("Network error. Please try again.");
         } finally {
             setSubmitting(false);
