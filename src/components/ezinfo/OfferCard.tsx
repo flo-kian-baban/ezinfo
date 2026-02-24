@@ -90,36 +90,50 @@ export default function OfferCard({ config, mode, accentColor, logEvent, onToast
 
                 {!offerClaimed ? (
                     <div className="pt-2">
-                        <div className={`rounded-xl border w-full overflow-hidden transition-colors duration-300 ${offerFormExpanded ? 'bg-black/40 border-accent/20' : 'bg-white/5 border-white/5 hover:bg-white/10'}`}>
-                            <button
-                                type="button"
-                                onClick={() => setOfferFormExpanded(!offerFormExpanded)}
-                                className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-bold text-white transition-all active:scale-[0.98] ${offerFormExpanded ? 'bg-accent/5' : ''}`}
-                            >
-                                <span className="flex items-center gap-2">
-                                    <svg className="h-3.5 w-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
-                                    </svg>
-                                    Claim this offer
-                                </span>
-                                <svg
-                                    className={`h-4 w-4 opacity-70 transition-transform duration-300 ${offerFormExpanded ? 'rotate-180 text-accent' : ''}`}
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        <button
+                            type="button"
+                            onClick={() => setOfferFormExpanded(true)}
+                            className="w-full rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 flex items-center justify-between px-4 py-3 text-[13px] font-bold text-white transition-all active:scale-[0.98]"
+                        >
+                            <span className="flex items-center gap-2">
+                                <svg className="h-3.5 w-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
                                 </svg>
-                            </button>
+                                Claim this offer
+                            </span>
+                        </button>
 
-                            <div
-                                className={`grid transition-all duration-300 ease-in-out ${offerFormExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                                    }`}
-                            >
-                                <div className="overflow-hidden">
-                                    <form onSubmit={handleClaimOffer} className="space-y-4 p-4 pt-2 relative overflow-hidden">
+                        {/* Modal Overlay */}
+                        {offerFormExpanded && (
+                            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-in fade-in duration-200">
+                                <div className="absolute inset-0" onClick={() => !offerClaiming && setOfferFormExpanded(false)}></div>
+                                <div className="w-full max-w-sm relative z-10 bg-[#121212] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+                                    {/* Modal Header */}
+                                    <div className="flex items-center justify-between p-4 border-b border-white/5 bg-white/[0.02]">
+                                        <h3 className="text-[15px] font-bold text-white flex items-center gap-2">
+                                            <svg className="h-4 w-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 010 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 010-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375z" />
+                                            </svg>
+                                            Claim Offer
+                                        </h3>
+                                        <button
+                                            type="button"
+                                            onClick={() => !offerClaiming && setOfferFormExpanded(false)}
+                                            className="p-1.5 rounded-full hover:bg-white/10 text-muted/50 hover:text-white transition-colors disabled:opacity-50"
+                                            disabled={offerClaiming}
+                                        >
+                                            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    {/* Modal Body */}
+                                    <form onSubmit={handleClaimOffer} className="space-y-4 p-5 relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
 
-                                        <div className="space-y-2.5 relative z-10 border-t border-accent/10 pt-4">
-                                            <label className="text-[11px] font-semibold text-muted/70 uppercase tracking-widest pl-1">Where should we send it?</label>
+                                        <div className="space-y-2.5 relative z-10 pt-1">
+                                            <label className="text-[12px] font-semibold text-muted/70 uppercase tracking-widest pl-1">Where should we send it?</label>
                                             <div className="relative">
                                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
                                                     <svg className="h-4 w-4 text-muted/50" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -131,19 +145,20 @@ export default function OfferCard({ config, mode, accentColor, logEvent, onToast
                                                     placeholder="Email Address"
                                                     value={offerEmail}
                                                     onChange={(e) => setOfferEmail(e.target.value)}
-                                                    className="w-full rounded-lg border border-white/10 bg-black/40 py-3 pl-10 pr-4 text-[13px] text-white placeholder-muted/50 transition-all duration-300"
+                                                    className="w-full rounded-xl border border-white/10 bg-black/40 py-3.5 pl-10 pr-4 text-[14px] text-white placeholder-muted/50 transition-all duration-300 focus:border-accent/40 focus:ring-4 focus:ring-accent/10 focus:outline-none"
+                                                    autoFocus
                                                 />
                                             </div>
                                         </div>
 
                                         {offerError && (
-                                            <p className="text-[11px] font-semibold text-red-400 text-center bg-red-400/10 py-2 rounded-lg relative z-10">{offerError}</p>
+                                            <p className="text-[12px] font-semibold text-red-400 text-center bg-red-400/10 py-2.5 rounded-lg relative z-10">{offerError}</p>
                                         )}
 
                                         <button
                                             type="submit"
                                             disabled={offerClaiming || !offerEmail}
-                                            className="w-full rounded-lg px-4 py-3 text-[13px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none flex items-center justify-center gap-2 relative z-10"
+                                            className="w-full rounded-xl px-4 py-3.5 text-[14px] font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none flex items-center justify-center gap-2 relative z-10"
                                             style={{ backgroundColor: accentColor, boxShadow: `0 4px 20px -5px ${accentColor}60` }}
                                         >
                                             {offerClaiming ? (
@@ -156,7 +171,7 @@ export default function OfferCard({ config, mode, accentColor, logEvent, onToast
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 ) : (
                     <div className="pt-3 animate-in fade-in zoom-in-95 duration-500">
