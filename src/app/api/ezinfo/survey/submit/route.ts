@@ -24,18 +24,6 @@ export async function POST(req: NextRequest) {
         });
 
         const supabase = createEzinfoClient();
-
-        // Verify touchpoint exists
-        const { data: tp, error: tpError } = await supabase
-            .from("touchpoints")
-            .select("id")
-            .eq("id", touchpoint_id)
-            .single();
-
-        if (tpError || !tp) {
-            return trace.fail("Invalid touchpoint", 404);
-        }
-
         const { data, error } = await supabase
             .from("survey_submissions")
             .insert({

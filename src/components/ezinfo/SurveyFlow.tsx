@@ -71,6 +71,7 @@ export default function SurveyFlow({ config, mode, accentColor, logEvent, onToas
             const json = await res.json();
             if (res.ok && json.submission_id) {
                 setCompleted(true);
+                onToast("Survey submitted successfully!");
                 logEvent("survey_submit");
             } else {
                 onToast("Something went wrong. Please try again.");
