@@ -89,7 +89,7 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
                 </p>
             </div>
 
-            <div className="pt-2">
+            <div>
                 <textarea
                     rows={4}
                     placeholder="Write your review here…"
@@ -99,8 +99,8 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
                 />
             </div>
 
-            <div className="pt-3 space-y-3">
-                {config.ai_enabled && preAiText === null && (
+            <div className="pt-2 space-y-2.5">
+                {(config.ai_enabled || mode === 'preview') && preAiText === null && (
                     <button
                         onClick={handleAiRewrite}
                         disabled={aiLoading || !reviewText.trim()}
