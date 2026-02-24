@@ -99,14 +99,17 @@ export default function MiddlewarePreview({ config, mode }: MiddlewarePreviewPro
     `;
 
     /* ── Wrapper Styles ── */
+    const isPreview = mode === "preview";
     const wrapperStyle: React.CSSProperties = {
         backgroundColor: sanitizeHex(config.theme_bg_color) || undefined,
-        minHeight: mode === "public" ? "100vh" : "100%",
+        minHeight: isPreview ? "100%" : "100vh",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: isPreview ? "flex-start" : "center",
+        paddingTop: isPreview ? "48px" : undefined,
+        paddingBottom: isPreview ? "24px" : undefined,
         position: "relative",
     };
 
