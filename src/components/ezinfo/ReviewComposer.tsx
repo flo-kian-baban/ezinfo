@@ -104,7 +104,9 @@ export default function ReviewComposer({ config, mode, accentColor, logEvent, on
                     <button
                         onClick={handleAiRewrite}
                         disabled={aiLoading || !reviewText.trim()}
-                        className={`w-full rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed`}
+                        className={`w-full rounded-xl border px-4 py-3 text-[14px] font-bold text-white transition-all flex items-center justify-center gap-2 
+                        ${(!reviewText.trim() && !aiLoading) ? 'bg-transparent border-white/20 border-dashed opacity-70 cursor-not-allowed' : 'bg-white/5 border-white/10 hover:bg-white/10 active:scale-[0.98]'}
+                        ${aiLoading ? 'opacity-60 cursor-wait' : ''}`}
                     >
                         {aiLoading ? (
                             <>
